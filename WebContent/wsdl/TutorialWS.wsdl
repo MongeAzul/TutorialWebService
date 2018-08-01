@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.tutorial.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.tutorial.com" xmlns:intf="http://services.tutorial.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.tutorial.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="algo">
+    <complexType>
+     <sequence>
+      <element name="pAlgo" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="algoResponse">
+    <complexType>
+     <sequence>
+      <element name="algoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="algoResponse">
+
+      <wsdl:part element="impl:algoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="algoRequest">
+
+      <wsdl:part element="impl:algo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="TutorialWS">
+
+      <wsdl:operation name="algo">
+
+         <wsdl:input message="impl:algoRequest" name="algoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:algoResponse" name="algoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="TutorialWSSoapBinding" type="impl:TutorialWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="algo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="algoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="algoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="TutorialWSService">
+
+      <wsdl:port binding="impl:TutorialWSSoapBinding" name="TutorialWS">
+
+         <wsdlsoap:address location="http://localhost:8080/TutorialWebService/services/TutorialWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
